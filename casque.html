@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="fr-CA">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SimFP VR · Casque</title>
+    <style>
+      html, body { margin: 0; height: 100%; background: #0e1418; color: #e6edf3; font-family: -apple-system, "Segoe UI", system-ui, sans-serif; overflow: hidden; }
+      #ui { position: fixed; left: 50%; bottom: 28px; transform: translateX(-50%); display: flex; gap: 12px; align-items: center; z-index: 2; }
+      #ui button { font: inherit; font-size: 20px; padding: 14px 26px; border-radius: 14px; border: none; background: #4aa3ff; color: #0b1620; font-weight: 700; cursor: pointer; }
+      #ui button:disabled { background: #3a4651; color: #93a1ad; cursor: default; }
+      #eleve { position: fixed; top: 12px; left: 12px; z-index: 3; display: flex; gap: 8px; align-items: center; background: rgba(20,30,38,0.85); border: 1px solid #2c3842; border-radius: 12px; padding: 6px 8px 6px 12px; font-size: 15px; }
+      #eleve strong { color: #9cd67a; }
+      #eleve button, #nom-carte button { font: inherit; border: 0; border-radius: 9px; padding: 6px 12px; background: #2c3842; color: #e6edf3; cursor: pointer; }
+      #nom { position: fixed; inset: 0; z-index: 5; display: none; align-items: center; justify-content: center; background: rgba(8,12,16,0.75); }
+      #nom.ouvert { display: flex; }
+      #nom-carte { background: #1a2229; border: 1px solid #2c3842; border-radius: 16px; padding: 24px; width: min(420px, calc(100vw - 32px)); display: flex; flex-direction: column; gap: 12px; }
+      #nom-carte h2 { margin: 0; font-size: 22px; }
+      #nom-carte p { margin: 0; color: #93a1ad; font-size: 15px; }
+      #nom-carte input { font: inherit; font-size: 20px; padding: 10px 12px; border-radius: 10px; border: 1px solid #2c3842; background: #0e1418; color: #e6edf3; }
+      #nom-carte button.ok { background: #4aa3ff; color: #0b1620; font-weight: 700; font-size: 18px; padding: 10px; }
+      #status { position: fixed; top: 16px; left: 50%; transform: translateX(-50%); font-size: 15px; color: #93a1ad; z-index: 2; text-align: center; max-width: 90vw; }
+    </style>
+    <script type="module" crossorigin src="./assets/casque-B-6gU6PB.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/rooms-Cbxh2mb1.js">
+  </head>
+  <body>
+    <div id="status">Chargement…</div>
+    <div id="eleve">Élève : <strong id="eleve-nom">—</strong> <button id="eleve-modifier" type="button">Modifier</button></div>
+    <div id="nom" role="dialog" aria-modal="true" aria-labelledby="nom-titre">
+      <form id="nom-carte">
+        <h2 id="nom-titre">Qui fait la simulation ?</h2>
+        <p>Ton prénom s'affiche sur le panneau, dans les dialogues et sur ton résultat, pour distinguer les élèves.</p>
+        <input id="nom-champ" maxlength="40" autocomplete="given-name" placeholder="Prénom (et nom)" required />
+        <button class="ok" type="submit">Commencer</button>
+      </form>
+    </div>
+    <div id="ui"><button id="enter" disabled>Entrer en réalité virtuelle</button></div>
+  </body>
+</html>
